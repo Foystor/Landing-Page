@@ -133,3 +133,20 @@ document.addEventListener('scroll', () => makeActive());
     });
 })();
 
+// Add a scroll to the top button that’s only visible when scrolling below the fold of the page
+window.addEventListener('scroll', () => {
+    const toTopBtn = document.querySelector('.toTopBtn');
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    if (document.body.scrollTop > window.innerHeight
+        || document.documentElement.scrollTop > window.innerHeight) {
+        toTopBtn.style.display = 'block';
+    } else {
+        toTopBtn.style.display = 'none';
+    }
+});
+
+document.querySelector('.toTopBtn').addEventListener('click', () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+});

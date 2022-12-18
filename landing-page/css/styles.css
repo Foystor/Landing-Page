@@ -109,6 +109,29 @@ section {
     color: #fff;
 }
 
+/* Scroll to the top button Styles */
+.toTopBtn {
+    display: none;
+    position: fixed;
+    height: 8vh;
+    width: 8vh;
+    bottom: 10vh;
+    right: 6vw;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5em;
+}
+
+.toTopBtn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
