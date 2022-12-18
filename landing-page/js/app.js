@@ -121,3 +121,15 @@ document.querySelector('header').addEventListener('click', (evt) => {
 // Set sections as active
 document.addEventListener('scroll', () => makeActive());
 
+// Hide fixed navigation bar while not scrolling (it should still be present on page load)
+(function() {
+    let timer = null;
+
+    window.addEventListener('scroll', () => {
+        const navBar = document.querySelector('header');
+        navBar.style.display = 'block';
+        clearTimeout(timer);
+        timer = setTimeout(() => navBar.style.display = 'none', 1000);
+    });
+})();
+
