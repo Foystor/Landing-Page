@@ -83,6 +83,10 @@ function makeActive() {
 
 
 // Scroll to anchor ID using scrollTO event
+function scrollToSection(hrefText) {
+    const section = document.querySelector(hrefText);
+    section.scrollIntoView({behavior: 'smooth'});
+}
 
 
 /**
@@ -94,6 +98,12 @@ function makeActive() {
 // Build menu 
 
 // Scroll to section on link click
+document.querySelector('header').addEventListener('click', (evt) => {
+    if (evt.target.nodeName === 'A') {
+        evt.preventDefault();
+        scrollToSection(evt.target.getAttribute('href'));
+    }
+})
 
 // Set sections as active
 document.addEventListener('scroll', () => { makeActive();});
