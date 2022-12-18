@@ -116,8 +116,8 @@ document.querySelector('header').addEventListener('click', (evt) => {
         evt.preventDefault();
         scrollToSection(evt.target.getAttribute('href'));
     }
-})
+});
 
 // Set sections as active
-document.addEventListener('scroll', () => { makeActive();});
+document.addEventListener('scroll', () => makeActive());
 
