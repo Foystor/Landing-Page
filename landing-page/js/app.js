@@ -22,7 +22,6 @@
  * Define Global Variables
  * 
 */
-const sections = [...document.querySelectorAll('section')];
 
 
 /**
@@ -49,9 +48,11 @@ function getCurrentNavLink(hrefText) {
 
 // build the nav
 function buildNav() {
+    const sections = [...document.querySelectorAll('section')];
     const navList = document.querySelector('#navbar__list');
     const fragment = document.createDocumentFragment();
 
+    // create li elements and insert into the DocumentFragment
     for (const section of sections) {
         const newNavItem = document.createElement('li');
         newNavItem.innerHTML = `<a href="#${section.id}" class="menu__link">${section.dataset.nav}</a>`;
@@ -59,12 +60,22 @@ function buildNav() {
         fragment.appendChild(newNavItem);
     }
 
+    // hide the nav
+    navList.style.display = 'none';
+
+    // remove all the old items and append new items
+    navList.innerHTML = '';
     navList.appendChild(fragment);
+
+    // show the nav
+    navList.style.display = 'block';
 }
 
 
 // Add class 'active' to section when near top of viewport
 function makeActive() {
+    const sections = [...document.querySelectorAll('section')];
+
     for (const section of sections) {
         const box = section.getBoundingClientRect();
         const VALUE = 150;
@@ -95,7 +106,9 @@ function scrollToSection(hrefText) {
  * 
 */
 
-// Build menu 
+// Build menu
+document.addEventListener('DOMContentLoaded', () => buildNav());
+document.querySelector('main').addEventListener('DOMNodeInserted', () => buildNav());
 
 // Scroll to section on link click
 document.querySelector('header').addEventListener('click', (evt) => {
@@ -108,5 +121,3 @@ document.querySelector('header').addEventListener('click', (evt) => {
 // Set sections as active
 document.addEventListener('scroll', () => { makeActive();});
 
-
-buildNav();
