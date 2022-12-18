@@ -108,7 +108,8 @@ function scrollToSection(hrefText) {
 
 // Build menu
 document.addEventListener('DOMContentLoaded', () => buildNav());
-document.querySelector('main').addEventListener('DOMNodeInserted', () => buildNav());
+document.querySelector('main').addEventListener('DOMNodeInserted', () => buildNav()); // dynamic menu
+
 
 // Scroll to section on link click
 document.querySelector('header').addEventListener('click', (evt) => {
@@ -118,8 +119,10 @@ document.querySelector('header').addEventListener('click', (evt) => {
     }
 });
 
+
 // Set sections as active
 document.addEventListener('scroll', () => makeActive());
+
 
 // Hide fixed navigation bar while not scrolling (it should still be present on page load)
 (function() {
@@ -133,11 +136,12 @@ document.addEventListener('scroll', () => makeActive());
     });
 })();
 
-// Add a scroll to the top button that’s only visible when scrolling below the fold of the page
+
+// Add a scroll to the top button
 window.addEventListener('scroll', () => {
     const toTopBtn = document.querySelector('.toTopBtn');
 
-    // When the user scrolls down 20px from the top of the document, show the button
+    // When the user scrolls below the fold of the page, show the button
     if (document.body.scrollTop > window.innerHeight
         || document.documentElement.scrollTop > window.innerHeight) {
         toTopBtn.style.display = 'block';
