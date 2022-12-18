@@ -31,6 +31,14 @@ const sections = [...document.querySelectorAll('section')];
  * 
 */
 
+// get corresponding Nav link of the section
+function getCurrentNavLink(hrefText) {
+    const navLinks = document.querySelectorAll('.menu__link');
+
+    for (const navLink of navLinks) {
+        if (navLink.getAttribute('href') === hrefText) return navLink;
+    }
+}
 
 
 /**
@@ -56,6 +64,22 @@ function buildNav() {
 
 
 // Add class 'active' to section when near top of viewport
+function makeActive() {
+    for (const section of sections) {
+        const box = section.getBoundingClientRect();
+        const VALUE = 150;
+
+        if (box.top <= VALUE && box.bottom >= VALUE) {
+            //apply active state on current section and corresponding Nav link
+            section.classList.add('active');
+            getCurrentNavLink(`#${section.id}`).classList.add('active');
+        } else {
+            //Remove active state from current section and corresponding Nav link
+            section.classList.remove('active');
+            getCurrentNavLink(`#${section.id}`).classList.remove('active');
+        }
+    }
+}
 
 
 // Scroll to anchor ID using scrollTO event
@@ -72,6 +96,7 @@ function buildNav() {
 // Scroll to section on link click
 
 // Set sections as active
+document.addEventListener('scroll', () => { makeActive();});
 
 
 buildNav();
