@@ -122,8 +122,8 @@ section {
 .toTopBtn {
     display: none;
     position: fixed;
-    height: 8vh;
-    width: 8vh;
+    height: 65px;
+    width: 65px;
     bottom: 10vh;
     right: 6vw;
     z-index: 99;
@@ -133,12 +133,8 @@ section {
     color: #333;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 1.5em;
-}
-
-.toTopBtn:hover {
-    background-color: #333;
-    color: #fff;
+    font-size: 35px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 
