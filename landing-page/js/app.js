@@ -48,7 +48,7 @@ function getCurrentNavLink(hrefText) {
 
 // build the nav
 function buildNav() {
-    const sections = [...document.querySelectorAll('section')];
+    const sections = document.querySelectorAll('section');
     const navList = document.querySelector('#navbar__list');
     const fragment = document.createDocumentFragment();
 
@@ -74,7 +74,7 @@ function buildNav() {
 
 // Add class 'active' to section when near top of viewport
 function makeActive() {
-    const sections = [...document.querySelectorAll('section')];
+    const sections = document.querySelectorAll('section');
 
     for (const section of sections) {
         const box = section.getBoundingClientRect();
@@ -112,7 +112,7 @@ document.querySelector('main').addEventListener('DOMNodeInserted', () => buildNa
 
 
 // Scroll to section on link click
-document.querySelector('header').addEventListener('click', (evt) => {
+document.querySelector('header').addEventListener('click', evt => {
     if (evt.target.nodeName === 'A') {
         evt.preventDefault();
         scrollToSection(evt.target.getAttribute('href'));
