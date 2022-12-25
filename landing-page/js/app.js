@@ -154,3 +154,18 @@ document.querySelector('.toTopBtn').addEventListener('click', () => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 });
+
+
+// Make sections collapsible
+document.querySelector('main').addEventListener('click', evt => {
+    if (evt.target.nodeName === 'H2') {
+        const details = evt.target.closest('details');
+        const subStr = evt.target.textContent.substring(1);
+
+        if (details.open) {
+            evt.target.textContent = `▸${subStr}`;
+        } else {
+            evt.target.textContent = `▾${subStr}`;
+        }
+    }
+});
