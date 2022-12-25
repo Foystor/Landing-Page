@@ -128,15 +128,34 @@ document.querySelector('header').addEventListener('click', evt => {
 document.addEventListener('scroll', () => makeActive());
 
 
-// Hide fixed navigation bar while not scrolling (it should still be present on page load)
+// Hide or show fixed navigation bar
 (function() {
+    const navBar = document.querySelector('header');
     let timer = null;
 
-    window.addEventListener('scroll', () => {
-        const navBar = document.querySelector('header');
+    // hide nav bar while not scrolling (it should still be present on page load)
+    const listener = () => {
         navBar.style.display = 'block';
         clearTimeout(timer);
         timer = setTimeout(() => navBar.style.display = 'none', 1000);
+    };
+
+    window.addEventListener('scroll', listener);
+
+    // keep showing nav bar when mouse is over it
+    navBar.addEventListener('mouseover', evt => {
+        if (evt.target.nodeName === 'UL' || 'A') {
+            clearTimeout(timer);
+            window.removeEventListener('scroll', listener);
+        }
+    });
+
+    // hide nav bar after mouse moves out of it, and bring back the sroll event lister
+    navBar.addEventListener('mouseout', evt => {
+        if (evt.target.nodeName === 'UL' || 'A') {
+            timer = setTimeout(() => navBar.style.display = 'none', 1000);
+            window.addEventListener('scroll', listener);
+        }
     });
 })();
 
