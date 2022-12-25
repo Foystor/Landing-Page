@@ -108,7 +108,11 @@ function scrollToSection(hrefText) {
 
 // Build menu
 document.addEventListener('DOMContentLoaded', () => buildNav());
-document.querySelector('main').addEventListener('DOMNodeInserted', () => buildNav()); // dynamic menu
+document.querySelector('main').addEventListener('DOMNodeInserted', () => {
+    // dynamic menu
+    buildNav();
+    makeActive();
+});
 
 
 // Scroll to section on link click
