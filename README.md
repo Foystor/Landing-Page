@@ -6,7 +6,7 @@ A multi-section landing page, with a dynamically updating navigational menu base
 
 ## Demo
 
-
+https://user-images.githubusercontent.com/74621252/232321966-1d0ed1a9-ef36-493e-bbe5-9e10e9fc57f0.mov
 
 ## Goals
 
